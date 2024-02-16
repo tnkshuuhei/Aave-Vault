@@ -28,13 +28,18 @@ This test suite also includes a16z's [ERC-4626 Property Tests](https://a16zcrypt
 
 ## Deployment
 
+Proxy on OPGoerli: https://goerli-optimism.etherscan.io/address/0xc83ad197808A948B29c8E94b3345508D296c7F7D#code
+
 To deploy the vault contract, first check that the deployment parameters in `script/Deploy.s.sol` are configured correctly, then check that your `.env` file contains these keys:
 
 ```
-POLYGON_RPC_URL=xxx
-MUMBAI_RPC_URL=xxx
-ETHERSCAN_API_KEY=xxx
-PRIVATE_KEY=xxx
+PRIVATE_KEY=
+OPGOERLI_RPC_UR=https://optimism-goerli.infura.io/v3/
+
+ETHERSCAN_API_KEY=
+ETHERSCAN_OPTIMISM_API_KEY=
+ETHERSCAN_POLYGON_API_KEY=
+ETHERSCAN_ARBITRUM_API_KEY=
 ```
 
 Then run:
@@ -45,16 +50,10 @@ source .env
 
 Then run one of the following commands:
 
-Mumbai Testnet:
+OpGoerli:
 
 ```bash
-forge script script/Deploy.s.sol:Deploy --rpc-url $MUMBAI_RPC_URL --broadcast --verify --legacy -vvvv
-```
-
-Polygon Mainnet:
-
-```bash
-forge script script/Deploy.s.sol:Deploy --rpc-url $POLYGON_RPC_URL --broadcast --verify --legacy -vvvv
+forge script script/opGoerli_Deploy.s.sol:Deploy --rpc-url $OPGOERLI_RPC_UR --broadcast -vvvv --etherscan-api-key $ETHERSCAN_OPTIMISM_API_KEY --verify
 ```
 
 ## Audits
@@ -64,7 +63,6 @@ You can find all audit reports under the audits folder
 - [01-03-2023 OpenZeppelin](./audits/01-03-2023_OpenZeppelin_Wrapped_AToken_Vault.pdf)
 - [03-03-2023 PeckShield](./audits/03-03-2023_Peckshield_Wrapped_AToken_Vault.pdf)
 - [18-06-2023 Certora](./certora/report/Aave-Vault-Formal-Verification.pdf)
-
 
 ## License
 

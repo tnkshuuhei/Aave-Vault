@@ -11,15 +11,18 @@ import "../src/ATokenVault.sol";
 contract Deploy is Script {
     // DEPLOYMENT PARAMETERS - CHANGE THESE FOR YOUR VAULT
     // ===================================================
-    address UNDERLYING_ASSET_ADDRESS = address(0); // Underlying asset listed in the Aave Protocol
+    // Underlying WETH
+    address UNDERLYING_ASSET_ADDRESS = 0x4778caf7b5DBD3934c3906c2909653eB1e0E601f; // Underlying asset listed in the Aave Protocol
     uint16 REFERRAL_CODE = 0; // Referral code to use
-    address AAVE_POOL_ADDRESSES_PROVIDER_ADDRESS = address(0); // PoolAddressesProvider contract of the Aave Pool
-    address constant PROXY_ADMIN_ADDRESS = address(0); // Address of the proxy admin
-    address constant OWNER_ADDRESS = address(0); // Address of the vault owner
-    string constant SHARE_NAME = "Wrapped aDAI"; // Name of the token shares
-    string constant SHARE_SYMBOL = "waDAI"; // Symbol of the token shares
-    uint256 constant FEE = 0.1e18; // Vault Fee bps in wad (e.g. 0.1e18 results in 10%)
-    uint256 constant INITIAL_LOCK_DEPOSIT = 10e18; // Initial deposit on behalf of the vault
+    address AAVE_POOL_ADDRESSES_PROVIDER_ADDRESS = 0xf3a4595bD9FBf129DEb80802a4785873F0ceB65c; // PoolAddressesProvider contract of the Aave Pool
+    address constant PROXY_ADMIN_ADDRESS = 0x06aa005386F53Ba7b980c61e0D067CaBc7602a62; // Address of the proxy admin
+    address constant OWNER_ADDRESS = 0x06aa005386F53Ba7b980c61e0D067CaBc7602a62; // Address of the vault owner
+    string constant SHARE_NAME = "Wrapped aWETH"; // Name of the token shares
+    string constant SHARE_SYMBOL = "waWETH"; // Symbol of the token shares
+
+    uint256 constant FEE = 0; // Vault Fee bps in wad (e.g. 0.1e18 results in 10%)
+    uint256 constant INITIAL_LOCK_DEPOSIT = 1e17; // Initial deposit on behalf of the vault
+
     // ===================================================
 
     ATokenVault public vault;
